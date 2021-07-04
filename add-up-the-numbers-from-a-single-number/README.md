@@ -49,15 +49,22 @@
 
 <!-- copy this section for every solution you study -->
 
-## [userName](link-to-user)
+## [Gabriel](link-to-user)
 
 <!-- paste the solution here -->
 
 ```js
+function addUpGabriel(num) {
+  let sum = 0;
+  for (let i = 1; i <= num; i++) {
+    sum += i;
+  }
+  return sum;
+}
 ```
 
 ### Strategy
-
+Through iterations the user will increment from 1 to the given number each time for accumulating value
 <!--
   Describe what strategy they used to pass this challenge.
   Careful! your strategy description should not mention
