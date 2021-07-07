@@ -32,6 +32,11 @@ function addUpSir(num) {
   return (num * (num + 1)) / 2;
 }
 
+// la-mia
+function  addUpWalter() {
+  return (num) * (num) +
+}
+
 for (const solution of [addUpAsian, addUpDoodledob, addUpGabriel, addUpSir]) {
   describe(solution.name + "", () => {
     it("1", () => {
