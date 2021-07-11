@@ -12,11 +12,13 @@ By studying multiple solutions to the same challenge written by more experienced
 
 ### Index
 
+- [Getting Started](#getting-started)
 - [Exercise Platforms](#exercise-platforms)
 - [Exploring](#exploring)
   - [Easy is Ok](#easy-is-ok)
   - [Forfeit!](#forfeit)
   - [Sandbox](#sandbox)
+  - [Refactoring Tests](#refactoring-tests)
   - [Forks](#forks)
   - [Sharing](#sharing)
 - [Write-Ups](#write-ups)
@@ -24,6 +26,50 @@ By studying multiple solutions to the same challenge written by more experienced
   - [Example](#example)
   - [Template](#template)
 - [Helpful Links](#helpful-links)
+
+---
+
+## Getting Started
+
+> You will need [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) on your computer to study this material
+
+1. Clone this repository:
+   - `git clone git@github.com:HackYourFutureBelgium/solution-write-ups.git` (SSH)
+2. `cd` into the repository
+   - `cd solution-write-ups`
+3. Install dependencies:
+   - `npm install`
+
+### In the Browser
+
+> Using a browser with good DevTools will make your life easier: [Chromium](http://www.chromium.org/getting-involved/download-chromium), [FireFox](https://www.mozilla.org/en-US/firefox/new/), [Edge](https://www.microsoft.com/edge), [Chrome](https://www.google.com/chrome/)
+
+1. Install or update the `study-lenses` package globally
+   - `npm install -g study-lenses` (if you do not have it already)
+   - `npm update -g study-lenses` (if you already have it installed)
+2. Run the `study` command from your CLI
+   - `study`
+3. The material will open in your default browser, you're good to go!
+   - if a `.test.js` file does not work, you can manually check on tests from the config options
+
+> If you have a windows computer and get this error:
+>
+> - `... /study.ps1 cannot be loaded because running scripts ...`
+>
+> follow the instructions in [this StackOverflow answer](https://stackoverflow.com/a/63424744), that should take care of it ; )
+
+### In Node.js
+
+> The [debugger built into VSCode](https://code.visualstudio.com/Docs/editor/debugging) is very good, it's all you'll need. Don't forget to set [breakpoints](https://code.visualstudio.com/Docs/editor/debugging#_breakpoints)!
+
+- Running files in `.js` (without `.test`):
+  - _debugger_: open the file, select the debug option from your VSCode side-bar, choose the `Current JS File (no tests)` option, and click the triangle button. (hint you will need to use breakpoints)
+  - _console_: `node path/to/file.js`, simple and easy
+- Running files ending in `.test.js` or `.spec.js`:
+  - _debugger_: open the file, select the debug option from your VSCode side-bar, choose the `Current JS File (with tests)` option, and click the triangle button. (hint: you will need to use breakpoints)
+  - _console_: files ending in .test.js or .spec.js must be run with `npm run test -- path/to/file.test.js`.
+
+[TOP](#solution-write-ups)
 
 ---
 
@@ -93,6 +139,46 @@ After you've chosen the problem you want to write up, create a file called `prob
 Experimenting with different solutions to the same function will be the best way to understand a challenge's behavior, and the most effective way to come up with good example use cases.
 
 Take a look through the [example-quarter-of-the-year/sandbox.test.js](./example-quarter-of-the-year/sandbox.test.js) example to see what this might look like.
+
+### Refactoring Tests
+
+To run the tests from different platforms in your `sandbox.test.js` file, you will need to refactor the test cases from whatever format they are in to use `describe`, `it` and `expect`. This will take some practice but will become a routine task. Check out the [./refactoring-tests.mp4](./refactoring-tests.mp4) to see it live, here are the examples from the video:
+
+<details>
+<summary>test refactor examples</summary>
+
+```js
+// -- tests from Edabit: Add up the Numbers from a Single Number
+
+Test.assertEquals(addUp(4), 10); // √
+Test.assertEquals(addUp(13), 91); // √
+Test.assertEquals(addUp(600), 180300);
+Test.assertEquals(addUp(392), 77028);
+Test.assertEquals(addUp(53), 1431);
+Test.assertEquals(addUp(897), 402753);
+Test.assertEquals(addUp(23), 276);
+Test.assertEquals(addUp(1000), 500500);
+Test.assertEquals(addUp(738), 272691);
+Test.assertEquals(addUp(100), 5050);
+Test.assertEquals(addUp(925), 428275);
+Test.assertEquals(addUp(1), 1);
+Test.assertEquals(addUp(999), 499500);
+Test.assertEquals(addUp(175), 15400);
+Test.assertEquals(addUp(111), 6216);
+
+// -- tests refactored to describe/it/expect
+
+describe('addUp: should add up the numbers less than or equal to the parameter', () => {
+  it('should return 10 when we pass 4', () => {
+    expect(addUp(4)).toEqual(10);
+  });
+  it('should return 91 when we pass 13', () => {
+    expect(addUp(13)).toEqual(91);
+  });
+});
+```
+
+</details>
 
 ### Forks
 
